@@ -11,7 +11,7 @@ if ($mysqli->connect_errno) {
 
   $html = new Template("./code/html.php");
 
-  $html->Set("head","<!DOCTYPE html><title>Budżet domowy</title><meta charset=\"UTF-8\"/><meta name=\"description\" content=\"Domowy budzet\"><meta name=\"keywords\" content=\"HTML,CSS,JavaScript,PHP,MySQL\"><meta name=\"author\" content=\"Robert Prajs, Mateusz Przybylski, Przemysaw Przybyła\"><link rel=\"stylesheet\" type=\"text/css\" href=\"./css/main.css?\">");
+  $html->Set("head","<title>Budżet domowy</title><meta charset=\"UTF-8\"/><meta name=\"description\" content=\"Domowy budzet\"><meta name=\"keywords\" content=\"HTML,CSS,JavaScript,PHP,MySQL\"><meta name=\"author\" content=\"Robert Prajs, Mateusz Przybylski, Przemysaw Przybyła\"><link rel=\"stylesheet\" type=\"text/css\" href=\"./css/main.css?\">");
 
   $body = new Template("./code/body.php");
 

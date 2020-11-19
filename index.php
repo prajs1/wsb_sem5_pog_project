@@ -3,11 +3,10 @@
   include_once './admin/classes/Template.php';
   include_once './admin/classes/pageTemplate.php';
 
-$mysqli = new mysqli("localhost", "studia_user", "\$tud1@", "studia");
-if ($mysqli->connect_errno) {
-   echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
-}
-
+  $mysqli = new mysqli("localhost", "studia_user", "\$tud1@", "studia");
+  if ($mysqli->connect_errno) {
+     echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+  }
 
   $html = new Template("./code/html.php");
 
@@ -15,7 +14,7 @@ if ($mysqli->connect_errno) {
 
   $body = new Template("./code/body.php");
 
-  $body->Set("header", "...");
+  $body->Set("header", menu($mysqli));
 
 
   $body->Set("footer", "<h5>Created by ...</h5>");

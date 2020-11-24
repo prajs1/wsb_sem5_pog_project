@@ -15,7 +15,6 @@
 
   $body->Set("header", "...");
 
-
   $body->Set("footer", "<h5>Created by Robert Prajs, Przemysław Przybyła, Mateusz Przybylski</h5>");
 
   $html->Set("body", $body->ToString());

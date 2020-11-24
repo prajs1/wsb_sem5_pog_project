@@ -1,7 +1,7 @@
 <?php
   include_once './admin/classes/Template.php';
   include_once './admin/classes/pageTemplate.php';
-  include_once './admin/functions/menu.php';
+
 
   $mysqli = new mysqli("localhost", "studia_user", "\$tud1@", "studia");
   if ($mysqli->connect_errno) {

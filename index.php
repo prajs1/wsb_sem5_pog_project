@@ -17,7 +17,7 @@
   $body->Set("header", menu($mysqli));
 
 
-  $body->Set("footer", "<h5>Created by ...</h5>");
+  $body->Set("footer", "<h5>Created by Robert Prajs, Przemysław Przybyła, Mateusz Przybylski</h5>");
 
   $html->Set("body", $body->ToString());
 

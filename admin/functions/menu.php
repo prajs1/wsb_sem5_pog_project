@@ -1,7 +1,7 @@
 <?php
   function menu($mysqli)
   {
-    $menu = "<div id="menu"><ol id=\"ol\">";
+    $menu = "<div id=\"menu\"><ol id=\"ol\">";
 
     $query_menu = "SELECT * FROM menu";
 

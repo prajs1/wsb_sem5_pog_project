@@ -1,5 +1,5 @@
 html{
-  background: url(../images/background2.jpg) no-repeat center center fixed;
+  background: url(../images/coins.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -45,7 +45,7 @@ body{
 }
 
 #menu{
-  width: 351px;
+  width: 352px;
   margin: 0px auto;
 }
 
@@ -66,10 +66,11 @@ body{
   border-width: 0px 0px 2px 1px;
   border-style: solid;
   border-left-style: dotted;
+  background-color: rgb(157, 157, 156, .7);
 }
 
 #ol > li:hover{
-  background-color: rgb(157, 157, 156, .4);
+  background-color: rgb(157, 157, 156, .5);
 
 }
 
@@ -87,7 +88,7 @@ body{
   display: block;
   text-decoration: none;
   padding:0 5px;
-  color: rgb(210, 213, 219);
+  color: white;
   border-top: 1px;
 }
 

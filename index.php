@@ -20,5 +20,7 @@
 
   $html->Set("body", $body->ToString());
 
+  //Image by <a href="https://pixabay.com/users/olichel-529835/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=912719">Olya Adamovich</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=912719">Pixabay</a>
+
   echo $html->ToString();
 ?>

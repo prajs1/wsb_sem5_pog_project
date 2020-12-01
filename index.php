@@ -16,11 +16,9 @@
 
   $body->Set("header", menu($mysqli));
 
-  $body->Set("footer", "<h5>Created by Robert Prajs, Przemysław Przybyła, Mateusz Przybylski</h5>");
+  $body->Set("footer", "<h5 id=\"footer2\">Image by <a href=\"https://pixabay.com/users/olichel-529835/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=912719\">Olya Adamovich</a> from <a href=\"https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=912719\">Pixabay</a></h5><h5 id=\"footer1\">Created by Robert Prajs, Przemysław Przybyła, Mateusz Przybylski</h5>");
 
   $html->Set("body", $body->ToString());
-
-  //Image by <a href="https://pixabay.com/users/olichel-529835/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=912719">Olya Adamovich</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=912719">Pixabay</a>
 
   echo $html->ToString();
 ?>

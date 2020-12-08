@@ -1,10 +1,17 @@
 <?php
   session_start();
 
+  #Exceptions
+  include_once './admin/classes/Exceptions/KeyException.php';
+
+  #Classes
   include_once './admin/classes/Template.php';
   include_once './admin/classes/pageTemplate.php';
+
+  #Functions
   include_once './admin/functions/menu.php';
   include_once './admin/functions/checkCredentials.php';
+  include_once './admin/functions/checkPermissions.php';
 
   $mysqli = new mysqli("localhost", "studia_user", "\$tud1@", "studia");
   if ($mysqli->connect_errno) {
@@ -21,12 +28,10 @@
   {
     $body->Set("header", menu($mysqli));
 
-    /*$user_set = "Witaj ".$_SESSION['username']." | <a href=\"index.php?akcja=wyloguj\">Wyloguj</a>"; //TODO: zrobić akcję wylogowania
+    /*$user_set = "Witaj ".$_SESSION['username']." | <a href=\"index.php?akcja=wyloguj\">Wyloguj</a>"; //TODO: zrobić akcję wylogowania*/
 
-    $body->Set("content", "Test");*/
+    $body->Set("content", "Witaj ".$_SESSION['username']);
   } else {
-    #$body->Set("header", "");
-
     $login = new pageTemplate('login');
     $body->Set("content", $login->ToString());
   }

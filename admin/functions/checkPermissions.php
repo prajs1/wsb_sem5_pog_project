@@ -1,17 +1,21 @@
 <?php
   function checkPermissions($l,$h)
   {
-    $query_login = "SELECT * FROM users WHERE login = '".$l."' && password = '".$h."'";
-    $result_login = mysql_query($query_login) or die("query_login nie działa");
+    $query_permissions = "SELECT * FROM users WHERE login = '".$l."' && password = '".$h."'";
+    $result_permissions = mysql_query($query_permissions) or die("query_permissions nie działa");
 
-    if(!$wynik)
+    if(!$result_permissions)
       return false;
 
-    $liczba_wierszy = mysql_num_rows($wynik);
-    $r = mysql_fetch_assoc($wynik);
+    $num_rows = mysql_num_rows($result_permissions);
+    $r = mysql_fetch_assoc($result_permissions);
 
-    if ($liczba_wierszy == 1 && $r['rank'] == 2)
-      return true;
+    if ($num_rows == 1 && $r['role'] == "Domownik")
+      return "Domownik";
+    elseif ($num_rows == 1 && $r['role'] == "Moderator")
+      return "Moderator";
+    elseif ($num_rows == 1 && $r['role'] == "Administrator")
+      return "Administrator";
 
     return false;
 

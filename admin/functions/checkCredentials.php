@@ -1,7 +1,7 @@
 <?php
   function checkCredentials($l,$h)
   {
-    $query_login = "SELECT * FROM users WHERE login = '".$l."' && password = '".$h."'";
+    $query_login = "SELECT * FROM users WHERE login LIKE '".$l."' && password LIKE '".$h."'";
     $result_login = mysql_query($query_login) or die("query_login nie działa");
 
     if(!$result_login)

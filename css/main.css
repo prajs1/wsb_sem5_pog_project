@@ -17,6 +17,7 @@ body{
   font-size: 90px;
   text-align: center;
   font-weight: bold;
+  color:rgb(0, 0, 0);
 }
 
 .frame{
@@ -54,7 +55,7 @@ body{
   border-style: dashed;
   border-width: 1px;
   margin: 30px 0px 30px 0px;
-  background-color: rgb(140, 140, 140, .2);
+  background-color: rgb(157, 157, 156, .7);
 }
 
 #menu{
@@ -77,7 +78,7 @@ body{
   float:left;
   width: 138px;
   border-width: 0px 0px 2px 1px;
-  border-style: solid;
+  border-style: dotted;
   border-left-style: dotted;
   background-color: rgb(157, 157, 156, .7);
 }
@@ -90,7 +91,7 @@ body{
 #ol > li:first-child {
   margin-left:0;
   border-left-width: 2px;
-  border-left-style: solid;
+  border-left-style: dotted;
 }
 
 #ol > li:last-child {
@@ -109,6 +110,7 @@ body{
   color: white;
 }
 
+/* Odkomentować w przypadku dodania podmenu
 #ol > li > ul {
   list-style-type:none;
   padding:0;
@@ -130,3 +132,4 @@ body{
 #ol > li > ul > li:last-child > a {
   border-bottom:1px solid #FFF;
 }
+*/

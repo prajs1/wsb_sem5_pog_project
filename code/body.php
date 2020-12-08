@@ -1,6 +1,6 @@
 <div class="frame">
   <div class="header">
-    <?php echo $this->Get("header"); ?>
+    <?php if (isset($_SESSION['logged'])) echo $this->Get("header"); ?>
   </div>
 </br>
   <div class="under_construct">Page under construct</div>

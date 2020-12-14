@@ -29,7 +29,7 @@
     $body->Set("content", "Witaj ".$_SESSION['username']." | <a href=\"./index.php?action=logout\">Wyloguj</a>");
   } elseif (!isset($_SESSION['logged'])) {
     $login = new pageTemplate('login');
-    $body->Set("content", $login->ToString());
+    $body->Set("content", $login->ToString(array('mysqli' => $mysqli)));
   }
 
 

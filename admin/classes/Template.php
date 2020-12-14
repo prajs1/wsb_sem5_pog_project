@@ -26,7 +26,10 @@
       }
     }
 
-    public function ToString() {
+    public function ToString($variables = array()) {
+        if(count($variables) > 0)
+          extract($variables);
+
         ob_start();
         include $this->filename;
         return ob_get_clean();

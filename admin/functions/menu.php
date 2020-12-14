@@ -12,7 +12,7 @@
       while ($a = $wynik_menu->fetch_assoc())
       {
         if($a['active'] == 'y'){
-          $menu .= "<li><a href=\"".$a['link']."\">".$a['name']."</a></li>";
+          $menu .= "<li><a href=\"page=".$a['link']."\">".$a['name']."</a></li>";
         }
       }
     }

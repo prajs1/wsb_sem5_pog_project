@@ -17,10 +17,13 @@
 
     public function Get($key)
     {
-      if(isset($this->data[$key]))
-        return $this->data[$key];
-        //TODO: sprawdzić działanie thow new exception
-    //  throw new Exception('In template ' . $this->filename . ' key ' . $key . ' is not set');
+      try {
+        if(isset($this->data[$key]))
+          return $this->data[$key];
+        throw new Exception();
+      } catch (\Exception $e) {
+        echo "Coś poszło nie tak przy tworzeniu klucza $key";
+      }
     }
 
     public function ToString() {

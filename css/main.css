@@ -1,5 +1,5 @@
 html{
-  background: url(../images/background2.jpg) no-repeat center center fixed;
+  background: url(../images/coins.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -17,6 +17,7 @@ body{
   font-size: 90px;
   text-align: center;
   font-weight: bold;
+  color:rgb(0, 0, 0);
 }
 
 .frame{
@@ -25,8 +26,21 @@ body{
   margin: 0px auto;
 }
 
-.footer{
-  text-align: right;
+#footer1{
+  left: 80%;
+  top: 95%;
+  position: fixed;
+}
+
+#footer2{
+  right: 88%;
+  top: 95%;
+  position: fixed;
+}
+
+#footer2 a{
+  text-decoration: none;
+  color: rgb(158, 27, 219);
 }
 
 .header{
@@ -41,11 +55,11 @@ body{
   border-style: dashed;
   border-width: 1px;
   margin: 30px 0px 30px 0px;
-  background-color: rgb(140, 140, 140, .2);
+  background-color: rgb(157, 157, 156, .8);
 }
 
 #menu{
-  width: 351px;
+  width: 560px;
   margin: 0px auto;
 }
 
@@ -62,21 +76,22 @@ body{
 
 #ol > li {
   float:left;
-  width:115px;
+  width: 138px;
   border-width: 0px 0px 2px 1px;
-  border-style: solid;
+  border-style: dotted;
   border-left-style: dotted;
+  background-color: rgb(157, 157, 156, .8);
 }
 
 #ol > li:hover{
-  background-color: rgb(157, 157, 156, .4);
+  background-color: rgb(157, 157, 156, .5);
 
 }
 
 #ol > li:first-child {
   margin-left:0;
   border-left-width: 2px;
-  border-left-style: solid;
+  border-left-style: dotted;
 }
 
 #ol > li:last-child {
@@ -87,7 +102,7 @@ body{
   display: block;
   text-decoration: none;
   padding:0 5px;
-  color: rgb(210, 213, 219);
+  color: white;
   border-top: 1px;
 }
 
@@ -95,6 +110,7 @@ body{
   color: white;
 }
 
+/* Odkomentować w przypadku dodania podmenu
 #ol > li > ul {
   list-style-type:none;
   padding:0;
@@ -116,3 +132,4 @@ body{
 #ol > li > ul > li:last-child > a {
   border-bottom:1px solid #FFF;
 }
+*/

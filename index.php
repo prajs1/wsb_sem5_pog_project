@@ -12,10 +12,10 @@
   include_once './admin/functions/menu.php';
   include_once './admin/functions/checkCredentials.php';
   include_once './admin/functions/checkPermissions.php';
-
+  
   $mysqli = new mysqli("localhost", "studia_user", "\$tud1@", "studia");
   if ($mysqli->connect_errno) {
-     echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+    echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
   }
 
   $html = new Template("./code/html.php");
@@ -42,4 +42,6 @@
   $html->Set("body", $body->ToString());
 
   echo $html->ToString();
+
+  session_destroy();
 ?>

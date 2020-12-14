@@ -1,21 +1,18 @@
 <?php
   session_start();
 
-  #Exceptions
-  include_once './admin/classes/Exceptions/KeyException.php';
-
   #Classes
-  include_once './admin/classes/Template.php';
-  include_once './admin/classes/pageTemplate.php';
+  require_once './admin/classes/Template.php';
+  require_once './admin/classes/pageTemplate.php';
 
   #Functions
-  include_once './admin/functions/menu.php';
-  include_once './admin/functions/checkCredentials.php';
-  include_once './admin/functions/checkPermissions.php';
+  require_once './admin/functions/menu.php';
+  require_once './admin/functions/checkCredentials.php';
+  require_once './admin/functions/checkPermissions.php';
 
   $mysqli = new mysqli("localhost", "studia_user", "\$tud1@", "studia");
   if ($mysqli->connect_errno) {
-     echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+    echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
   }
 
   $html = new Template("./code/html.php");
@@ -24,13 +21,13 @@
 
   $body = new Template("./code/body.php");
 
-  if(isset($_SESSION['logged']))
-  {
+  if(isset($_SESSION['logged']) && isset($_GET['action']) && $_GET['action'] == 'logout') {
+    session_unset();
+    echo "<meta http-equiv=\"refresh\" content=\"1; url='./index.php'\">";
+  } elseif(isset($_SESSION['logged']) && !isset($_GET['action'])) {
     $body->Set("header", menu($mysqli));
 
-    /*$user_set = "Witaj ".$_SESSION['username']." | <a href=\"index.php?akcja=wyloguj\">Wyloguj</a>"; //TODO: zrobić akcję wylogowania*/
-
-    $body->Set("content", "Witaj ".$_SESSION['username']);
+    $body->Set("content", "Witaj ".$_SESSION['username']." | <a href=\"index.php?action=logout\">Wyloguj</a>");
   } else {
     $login = new pageTemplate('login');
     $body->Set("content", $login->ToString());

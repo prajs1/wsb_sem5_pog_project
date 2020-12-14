@@ -39,4 +39,6 @@
   $html->Set("body", $body->ToString());
 
   echo $html->ToString();
+
+  session_destroy();
 ?>

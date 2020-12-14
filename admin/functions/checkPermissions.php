@@ -10,11 +10,11 @@
     $num_rows = $result_permissions->num_rows;
     $r = $result_permissions->fetch_assoc();
 
-    if ($num_rows == 1 && $r['role'] == "Domownik")
-      return "Domownik";
-    elseif ($num_rows == 1 && $r['role'] == "Moderator")
+    if ($num_rows == 1 && $r['role'] == "inmate")
+      return "Inmate";
+    elseif ($num_rows == 1 && $r['role'] == "moderator")
       return "Moderator";
-    elseif ($num_rows == 1 && $r['role'] == "Administrator")
+    elseif ($num_rows == 1 && $r['role'] == "administrator")
       return "Administrator";
 
     return false;

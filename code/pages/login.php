@@ -19,7 +19,7 @@
   	$pass = $_POST['pass'];
 
   	if(checkCredentials($login, $pass,$mysqli)){
-  			$_SESSION['logged_permision'] = checkPermissions($login, $pass, $mysqli);
+  			$_SESSION['logged'] = checkPermissions($login, $pass, $mysqli);
   			$_SESSION['username'] = $login;
 
   			echo "<fieldset><legend><b><i>Uwagi</i></b></legend>Zalogowano pomyslnie</fieldset>";

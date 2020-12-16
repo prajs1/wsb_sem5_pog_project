@@ -30,7 +30,8 @@
 
     if (isset($_GET['page'])) {
       if ($_GET['page'] == "settings") {
-        // code...
+        $settings = new pageTemplate('settings');
+        $body->Set("content", $settings->ToString(array('mysqli' => $mysqli)));
       } elseif ($_GET['page'] == "add_payment") {
         // code...
       } elseif ($_GET['page'] == "reports") {

@@ -15,7 +15,7 @@
 
   	if(checkCredentials($login, $pass,$mysqli)){
   			$_SESSION['logged'] = checkPermissions($login, $pass, $mysqli);
-				$_SESSION['username'] = $login;
+  			$_SESSION['username'] = $login;
 
   			echo "<fieldset><legend><b><i>Uwagi</i></b></legend>Zalogowano pomyslnie</fieldset>";
   			echo "<meta http-equiv=\"refresh\" content=\"1; url='./index.php'\">";

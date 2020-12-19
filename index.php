@@ -9,11 +9,7 @@
   require_once './admin/functions/menu.php';
   require_once './admin/functions/checkCredentials.php';
   require_once './admin/functions/checkPermissions.php';
-
-  $mysqli = new mysqli("localhost", "studia_user", "\$tud1@", "studia");
-  if ($mysqli->connect_errno) {
-    echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
-  }
+  require_once './admin/functions/dbConnect.php';
 
   $html = new Template("./code/html.php");
 

@@ -29,11 +29,13 @@
         $settings = new pageTemplate('settings');
         $body->Set("content", $settings->ToString(array('mysqli' => $mysqli)));
       } elseif ($_GET['page'] == "add_payment") {
-        // code...
+        $add_payment = new pageTemplate('add_payment');
+        $body->Set("content", $add_payment->ToString(array('mysqli' => $mysqli)));
       } elseif ($_GET['page'] == "reports") {
         // code...
-      } elseif ($_GET['page'] == "payment_history") {
-        // code...
+      } elseif ($_GET['page'] == "add_recipent") {
+        $add_recipent = new pageTemplate('add_recipent');
+        $body->Set("content", $add_recipent->ToString(array('mysqli' => $mysqli)));
       }
     }
   } elseif (!isset($_SESSION['logged'])) {

@@ -46,6 +46,7 @@ body{
 .header{
   width: 100%;
   height: auto;
+  display:flex;
 }
 
 .content{
@@ -60,7 +61,7 @@ body{
 
 #menu{
   width: 560px;
-  margin: 0px auto;
+  margin: 0px 0 0 93px;
 }
 
 
@@ -110,7 +111,8 @@ body{
   color: white;
 }
 
-/* Odkomentować w przypadku dodania podmenu
+/* TODO poprawic wyświetlanie się podmenu, aktualnie pola opdmenu nakładają się na siebie */
+
 #ol > li > ul {
   list-style-type:none;
   padding:0;
@@ -124,12 +126,16 @@ body{
   display:block;
 }
 
-#ol > li > ul > li > a {
+#ol > li:hover > ul >  a {
   border-top:1px solid #FFF;
   height: 30px;
 }
 
-#ol > li > ul > li:last-child > a {
+#ol > li > ul:last-child > a {
   border-bottom:1px solid #FFF;
 }
-*/
+
+#acc_numer_input:invalid{
+  border-color: darkred;
+  background-color: rgb(233, 61, 61);
+}

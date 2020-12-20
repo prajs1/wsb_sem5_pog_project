@@ -15,7 +15,7 @@
   }
 ?>
 
-<form action="" method="post"><!-- TODO action do pliku aktualizującego dane i hasło użytkownika -->
+<form method="post">
   <fieldset><legend><b><i>Dane użytkownika</i></b></legend>
     Imie: <input type="text" value="<?php echo $user_data['name']; ?>" readonly /> </br>
     Nazwisko: <input type="text" value="<?php echo $user_data['surname']; ?>" readonly /> </br>
@@ -32,6 +32,7 @@
   </br>
 
   <fieldset><legend><b><i>Zmiana hasła</i></b></legend>
+    <!-- TODO ustawić pattern na input hasła dla większego bezpieczeństwa -->
     <input type="password" class="pass_input" name="pass1" placeholder="Podaj hasło"></br>
     <input type="password" class="pass_input" name="pass2" placeholder="Podaj ponownie hasło">
     </br>

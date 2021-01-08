@@ -26,6 +26,39 @@ body{
   margin: 0px auto;
 }
 
+.fieldsets{
+  text-align: center;
+}
+
+.fieldsets_input_div_parts{
+  display: inline-block;
+}
+
+.input{
+  width: 260px;
+  height: 20px;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.5);
+  border-style: hidden;
+  margin: 2px 0px 2px 0px;
+  outline: none;
+}
+
+.button{
+  background: none;
+  border: none;
+  margin: 10px 0px 0px 0px;
+  padding: 0;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+#login_button :hover{
+  background-color: rgb(157, 157, 156, .8)
+}
 #footer1{
   left: 80%;
   top: 95%;
@@ -59,83 +92,119 @@ body{
   background-color: rgb(157, 157, 156, .8);
 }
 
-#menu{
-  width: 560px;
-  margin: 0px 0 0 93px;
+.logout_button{
+  margin:auto;
+  margin-right: 0px;
+  padding: 20px 15px;
+  display: inline-block;
+  text-decoration:none;
+  position:relative;
+  z-index: 1;
+  color: #fff;
+  background: rgb(157, 157, 156, .8);
+  text-transform:uppercase;
+  border-bottom-left-radius: 15px;
 }
 
-
-#ol {
-  list-style-type:none;
-  padding:0;
-  margin:0;
-  font-size:18px;
-  height:2em;
-  line-height:2em;
-  text-align:center;
+.logout_button a{
+  text-decoration:none;
+  color: #fff;
 }
 
-#ol > li {
+.logout_button:hover a{
+    background: rgb(157, 157, 156, .9);
+    color: #fff;
+}
+
+nav{
+
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding: 0;
+    margin:auto;
+    margin-left:0px;
+}
+.container{
+  margin: auto;
+  width:100%;
+  max-width:1200px;
+
+}
+.menu{
+  padding: 0px;
+  margin:0px;
+  position:relative;
+}
+.menu li{
   float:left;
-  width: 138px;
-  border-width: 0px 0px 2px 1px;
-  border-style: dotted;
-  border-left-style: dotted;
-  background-color: rgb(157, 157, 156, .8);
+  list-style:none;
 }
 
-#ol > li:hover{
-  background-color: rgb(157, 157, 156, .5);
-
+.menu li:last-child {
+  border-bottom-right-radius: 15px;
 }
 
-#ol > li:first-child {
-  margin-left:0;
-  border-left-width: 2px;
-  border-left-style: dotted;
+/*
+.logout_button a::before{
+  content:" ";
+    position: absolute;
+    background:#ccc;
+    width: 0;
+    height: 2px;
+    left: 0;
+    bottom: 0;
+  transition-duration:1s;
 }
-
-#ol > li:last-child {
-  border-right-width: 2px;
+.logout_button:hover > a::before{
+  width:100%;
 }
+*/
 
-#ol a {
-  display: block;
-  text-decoration: none;
-  padding:0 5px;
-  color: white;
-  border-top: 1px;
+.menu li a{
+  padding: 20px 15px;
+  display: inline-block;
+  text-decoration:none;
+  position:relative;
+  z-index: 1;
+  color: #fff;
+  background: rgb(157, 157, 156, .8);
+  text-transform:uppercase;
 }
-
-#ol a:hover{
-  color: white;
+.menu li a::before{
+  content:" ";
+    position: absolute;
+    background:#ccc;
+    width: 0;
+    height: 2px;
+    left: 0;
+    bottom: 0;
+  transition-duration:1s;
 }
-
-/* TODO poprawic wyświetlanie się podmenu, aktualnie pola opdmenu nakładają się na siebie */
-
-#ol > li > ul {
-  list-style-type:none;
-  padding:0;
-  margin:0;
+.menu li:hover > a::before{
+  width:100%;
+}
+.menu li:hover a{
+  background: rgb(157, 157, 156, .6);
+  color: #fff;
+}
+.menu li ul{
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  z-index: 100;
   display:none;
-  position: relative;
-  height: 0em;
+  background: rgb(157, 157, 156);
 }
-
-#ol > li:hover > ul {
+.menu li:hover ul{
   display:block;
 }
-
-#ol > li:hover > ul >  a {
-  border-top:1px solid #FFF;
-  height: 30px;
-}
-
-#ol > li > ul:last-child > a {
-  border-bottom:1px solid #FFF;
-}
-
-#acc_numer_input:invalid{
-  border-color: darkred;
-  background-color: rgb(233, 61, 61);
+.menu li ul li a{
+  width: 100%;
 }

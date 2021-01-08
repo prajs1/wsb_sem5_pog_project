@@ -1,10 +1,10 @@
 <?php
   $login_frame = '
   	<form method="POST" action="index.php">
-  	<fieldset id="log"><legend><b><i>Logowanie</i></b></legend>
-  	<b><i>Nazwa użytkownika</i></b> <br><input type="text" name="login"><br>
-  	<b><i>Hasło</i></b> <br><input type="password" name="pass"><br>
-  	<input type="submit" value="Zaloguj">
+  	<fieldset class="fieldsets"><legend><b><i>Logowanie</i></b></legend>
+  	<div class="fieldsets_input_div_parts"><b><i>Nazwa użytkownika</i></b> <br><input type="text" name="login" class="input" placeholder="Wprowadź nazwę użytkownika"></div>
+  	<div class="fieldsets_input_div_parts"><b><i>Hasło</i></b> <br><input type="password" name="pass" class="input" placeholder="Wprowadź hasło"></div><br>
+  	<input type="submit" value="Zaloguj" class="button">
   	</fieldset>
   	</form>
 	';
@@ -17,14 +17,14 @@
   			$_SESSION['logged'] = checkPermissions($login, $pass, $mysqli);
   			$_SESSION['username'] = $login;
 
-  			echo "<fieldset><legend><b><i>Uwagi</i></b></legend>Zalogowano pomyslnie</fieldset>";
+  			echo "<fieldset class=\"fieldsets\"><legend><b><i>Uwagi</i></b></legend>Zalogowano pomyslnie</fieldset>";
   			echo "<meta http-equiv=\"refresh\" content=\"1; url='./index.php'\">";
   	}else{
   		echo $login_frame;
-  		echo "<fieldset><legend><b><i>Uwagi</i></b></legend>Podany login lub haslo sa nieprawidlowe</fieldset>";
+  		echo "<fieldset class=\"fieldsets\"><legend><b><i>Uwagi</i></b></legend>Podany login lub haslo sa nieprawidlowe</fieldset>";
   	}
   }else{
   	echo $login_frame;
-  	echo "<fieldset><legend><b><i>Uwagi</i></b></legend>Nalezy wypelnic wszystkie pola</fieldset>";
+  	echo "<fieldset class=\"fieldsets\"><legend><b><i>Uwagi</i></b></legend>Nalezy wypelnic wszystkie pola</fieldset>";
   }
 ?>

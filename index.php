@@ -9,6 +9,7 @@
   require_once './admin/functions/menu.php';
   require_once './admin/functions/checkCredentials.php';
   require_once './admin/functions/checkPermissions.php';
+  require_once './admin/functions/getRecipents.php';
   require_once './admin/functions/dbConnect.php';
 
   $html = new Template("./code/html.php");
@@ -35,8 +36,15 @@
         // code...
       } elseif ($_GET['page'] == "add_recipent") {
         $add_recipent = new pageTemplate('add_recipent');
-        $body->Set("content", $add_recipent->ToString(array('mysqli' => $mysqli)));
+        $body->Set("content", $add_recipent->ToString());
+      } elseif ($_GET['page'] == "recipents_list") {
+        $recipents_list = new pageTemplate('recipents_list');
+        $body->Set("content", $recipents_list->ToString(array('mysqli' => $mysqli)));
       }
+    }
+    else {
+      $settings = new pageTemplate('settings');
+      $body->Set("content", $settings->ToString(array('mysqli' => $mysqli)));
     }
   } elseif (!isset($_SESSION['logged'])) {
     $login = new pageTemplate('login');

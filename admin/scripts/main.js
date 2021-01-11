@@ -210,3 +210,38 @@ window.onclick = function (event) {
     document.getElementById("modal_edit_recipent").style.display = "none";
   }
 }
+
+function addPayment() {
+  /*TODO dokończyć funkcję odpalająca funkcje dodająca płatność */
+  var recipent_name = document.getElementById("recipent_name_input").value;
+  var acc_number = document.getElementById("acc_number_input").value;
+
+  $.ajax({
+    type: "POST",
+    dataType: "json",
+    async: false,
+    url: "./admin/functions/addPayment.php",
+    data: {
+      recipent_name: recipent_name,
+      acc_number: acc_number
+    },
+    success: function (data) {
+      switch (data) {
+        case 0:
+          alert("Zmienne nie istnieją");
+          break;
+        case 1:
+          alert("Zmienne są puste");
+          break;
+        case 2:
+          alert("Coś poszło nie tak przy wykonywaniu zapytania");
+          break;
+        case 3:
+          location.reload();
+          break;
+      }
+    },
+    error: function () {
+    }
+  });
+}

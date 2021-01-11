@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 html{
   background: url(../images/coins.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
@@ -9,6 +13,7 @@ html{
 body{
   margin: 0px;
   color:rgb(255, 255, 255);
+  font-size: 20px;
 }
 
 .under_construct{
@@ -35,15 +40,39 @@ body{
 }
 
 .input{
-  width: 260px;
-  height: 20px;
-  font-size: 16px;
+  width: 280px;
+  height: 30px;
+  font-size: 18px;
   text-align: center;
   border-radius: 10px;
   background: rgba(255, 255, 255, 0.5);
   border-style: hidden;
   margin: 2px 0px 2px 0px;
   outline: none;
+}
+
+.input_payment{
+  margin-bottom: 10px;
+}
+
+.input_select{
+  width: 280px;
+  height: 30px;
+  text-align-last: center;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.5);
+  border-style: hidden;
+  margin: 2px 0px 12px 0px;
+  outline: none;
+  font-size: 18px;
+}
+
+.input_select_option{
+  text-align: center;
+}
+
+.input_checkbox{
+  transform: scale(1.5);
 }
 
 .button{
@@ -53,7 +82,7 @@ body{
   padding: 0;
   color: white;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 24px;
 }
 
 .rec_button{
@@ -88,7 +117,7 @@ body{
 
 .content{
   padding: 10px 15px 10px 15px;
-  width: 968px;
+  width: 100%;
   border-radius: 15px;
   border-style: dashed;
   border-width: 1px;

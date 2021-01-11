@@ -44,6 +44,14 @@ body{
   outline: none;
 }
 
+.input_payment{
+  margin-bottom: 10px;
+}
+
+.input_checkbox{
+  transform: scale(3.5);
+}
+
 .button{
   background: none;
   border: none;

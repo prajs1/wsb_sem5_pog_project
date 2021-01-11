@@ -24,18 +24,18 @@
   </br>
 
   <form method="post">
-  <fieldset class="fieldsets"><legend><b><i>Limit wydatków osobistych</i></b></legend>
-    <input type="text" class="input" id="personal_limit_input" value="<?php echo ($user_data['personal_limit'] != -1) ? $user_data['personal_limit'] : "Brak";?>" name="personal_limit" /> <br> Dla braku limitu ustaw '-1' 
+    <fieldset class="fieldsets"><legend><b><i>Limit wydatków osobistych</i></b></legend>
+      <input type="text" class="input" id="personal_limit_input" value="<?php echo ($user_data['personal_limit'] != -1) ? $user_data['personal_limit'] : "Brak";?>" name="personal_limit" /> <br> Dla braku limitu ustaw '-1' 
+      </br>
+      <input class="button" type="button" value="Zaktualizuj" onclick="updatePersonalLimit('<?php echo $_SESSION['username'];?>')">
+    </fieldset>
     </br>
-    <input class="button" type="button" value="Zaktualizuj" onclick="updatePersonalLimit('<?php echo $_SESSION['username'];?>')">
-  </fieldset>
-  </br>
 
-  <fieldset class="fieldsets"><legend><b><i>Zmiana hasła</i></b></legend>
-    <!-- TODO ustawić pattern na input hasła dla większego bezpieczeństwa -->
-    <input class="input" type="password" class="pass_input" name="pass1" placeholder="Wprowadź nowe hasło"></br>
-    <input class="input" type="password" class="pass_input" name="pass2" placeholder="Wprowadź ponownie hasło">
-    </br>
-    <input class="button" type="button" value="Zaktualizuj" onclick="updatePassword('<?php echo $_SESSION['username'];?>')">
-  </fieldset>
-</form>
+    <fieldset class="fieldsets"><legend><b><i>Zmiana hasła</i></b></legend>
+      <!-- TODO ustawić pattern na input hasła dla większego bezpieczeństwa -->
+      <input type="password" class="pass_input input" name="pass1" placeholder="Wprowadź nowe hasło"></br>
+      <input type="password" class="pass_input input" name="pass2" placeholder="Wprowadź ponownie hasło">
+      </br>
+      <input class="button" type="button" value="Zaktualizuj" onclick="updatePassword('<?php echo $_SESSION['username'];?>')">
+    </fieldset>
+  </form> 

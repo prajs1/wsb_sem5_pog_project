@@ -1,20 +1,17 @@
+<div class="modal" id="modal_edit_recipent">
+  <div class="modal_content">
+    <form method="post">
+      <fieldset class="fieldsets">
+        <legend><b><i>Zaktualizuj dane odbiorcy</i></b></legend>
+        <input type="text" name="ecit_recipent_id" id="edit_recipent_id" readonly>
+        <input type="text" name="edit_recipent_name" class="input" id="edit_recipent_name" placeholder="Wprowadź nazwę odbiorcy">
+        <input type="text" name="edit_recipent_acc_number" class="input" id="edit_recipent_acc_number" pattern="(\d*).{26,}" maxlength="26" placeholder="Wprowadź numer konta odbiorcy"><br>
+        <input type="button" value="Zaktualizuj" class="button" onclick="editRecipent()">
+      </fieldset>
+    </form>
+  </div>
+</div>
+
 <?php
-  $recipents = getRecipents($mysqli);
-
-  $name_div = "<div class=\"fieldsets_input_div_parts\">Nazwa:<br>";
-  $acc_number_div = "<div class=\"fieldsets_input_div_parts\">Numer konta:<br>";
-
-  foreach ($recipents as $recipent) {
-    $name_div .= "<input class=\"input\" id=\"recipent".$recipent['id_recipent']."\" type=\"text\" value=\"".$recipent['name']."\" onclick=\"copy('recipent".$recipent['id_recipent']."')\" readonly><br>";
-    $acc_number_div .= "<input class=\"input\" id=\"acc_number".$recipent['id_recipent']."\" type=\"text\" value=\"".$recipent['acc_number']."\" onclick=\"copy('acc_number".$recipent['id_recipent']."')\" readonly><br>";
-  }
-
-  //TODO: dokończyć listę odbiorców(dodać opcje edycji dla moderatora i administratora)
-
-  $name_div .= "</div>";
-  $acc_number_div .= "</div>";
-
-  $full_list = "<fieldset class=\"fieldsets\"><legend><b><i>Lista odbiorców</i></b></legend>\n" . $name_div . $acc_number_div . "\n</fieldset>";
-
-  echo $full_list;
+  echo listRecipent($mysqli);
 ?>

@@ -9,6 +9,7 @@
   require_once './admin/functions/menu.php';
   require_once './admin/functions/checkCredentials.php';
   require_once './admin/functions/checkPermissions.php';
+  require_once './admin/functions/listRecipent.php';
   require_once './admin/functions/getRecipents.php';
   require_once './admin/functions/dbConnect.php';
 

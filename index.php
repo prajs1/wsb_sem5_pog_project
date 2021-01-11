@@ -1,47 +1,60 @@
 <?php
   session_start();
 
-  #Exceptions
-  include_once './admin/classes/Exceptions/KeyException.php';
-
   #Classes
-  include_once './admin/classes/Template.php';
-  include_once './admin/classes/pageTemplate.php';
+  require_once './admin/classes/Template.php';
+  require_once './admin/classes/pageTemplate.php';
 
   #Functions
-  include_once './admin/functions/menu.php';
-  include_once './admin/functions/checkCredentials.php';
-  include_once './admin/functions/checkPermissions.php';
-  
-  $mysqli = new mysqli("localhost", "studia_user", "\$tud1@", "studia");
-  if ($mysqli->connect_errno) {
-    echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
-  }
+  require_once './admin/functions/menu.php';
+  require_once './admin/functions/checkCredentials.php';
+  require_once './admin/functions/checkPermissions.php';
+  require_once './admin/functions/getRecipents.php';
+  require_once './admin/functions/dbConnect.php';
 
   $html = new Template("./code/html.php");
 
-  $html->Set("head","<title>Budżet domowy</title><meta charset=\"UTF-8\"/><meta name=\"description\" content=\"Domowy budzet\"><meta name=\"keywords\" content=\"HTML,CSS,JavaScript,PHP,MySQL\"><meta name=\"author\" content=\"Robert Prajs, Mateusz Przybylski, Przemysaw Przybyła\"><link id=\"size-stylesheet\" rel=\"stylesheet\" type=\"text/css\" href=\"./css/main.css?\"><script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js\"></script><script src=\"./admin/scripts/main.js\"></script>");
+  $head = new pageTemplate('head');
+  $html->Set("head", $head->ToString());
 
   $body = new Template("./code/body.php");
+  if(isset($_SESSION['logged']) && isset($_GET['action']) && $_GET['action'] == 'logout') {
+    session_unset();
+    echo "<meta http-equiv=\"refresh\" content=\"1; url='./index.php'\">";
+  } elseif(isset($_SESSION['logged']) && !isset($_GET['action'])) {
+    $header = new pageTemplate('header');
+    $body->Set("header", $header->ToString(array('mysqli' => $mysqli)));
 
-  if(isset($_SESSION['logged']))
-  {
-    $body->Set("header", menu($mysqli));
-
-    /*$user_set = "Witaj ".$_SESSION['username']." | <a href=\"index.php?akcja=wyloguj\">Wyloguj</a>"; //TODO: zrobić akcję wylogowania*/
-
-    $body->Set("content", "Witaj ".$_SESSION['username']);
-  } else {
+    if (isset($_GET['page'])) {
+      if ($_GET['page'] == "settings") {
+        $settings = new pageTemplate('settings');
+        $body->Set("content", $settings->ToString(array('mysqli' => $mysqli)));
+      } elseif ($_GET['page'] == "add_payment") {
+        $add_payment = new pageTemplate('add_payment');
+        $body->Set("content", $add_payment->ToString(array('mysqli' => $mysqli)));
+      } elseif ($_GET['page'] == "reports") {
+        // code...
+      } elseif ($_GET['page'] == "add_recipent") {
+        $add_recipent = new pageTemplate('add_recipent');
+        $body->Set("content", $add_recipent->ToString());
+      } elseif ($_GET['page'] == "recipents_list") {
+        $recipents_list = new pageTemplate('recipents_list');
+        $body->Set("content", $recipents_list->ToString(array('mysqli' => $mysqli)));
+      }
+    }
+    else {
+      $settings = new pageTemplate('settings');
+      $body->Set("content", $settings->ToString(array('mysqli' => $mysqli)));
+    }
+  } elseif (!isset($_SESSION['logged'])) {
     $login = new pageTemplate('login');
-    $body->Set("content", $login->ToString());
+    $body->Set("content", $login->ToString(array('mysqli' => $mysqli)));
   }
 
-
-  $body->Set("footer", "<h5 id=\"footer2\">Image by <a href=\"https://pixabay.com/users/olichel-529835/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=912719\">Olya Adamovich</a> from <a href=\"https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=912719\">Pixabay</a></h5><h5 id=\"footer1\">Created by Robert Prajs, Przemysław Przybyła, Mateusz Przybylski</h5>");
+  $footer = new pageTemplate('footer');
+  $body->Set("footer", $footer->ToString());
 
   $html->Set("body", $body->ToString());
 
   echo $html->ToString();
-
-  session_destroy();
 ?>

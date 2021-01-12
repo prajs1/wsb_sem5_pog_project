@@ -5,9 +5,9 @@
 
   if (isset($_POST['payment_recipent_id']) && isset($_POST['payment_amount']) && isset($_POST['payment_date'])) {
     if (!empty($_POST['payment_recipent_id']) && !empty($_POST['payment_amount']) && !empty($_POST['payment_date'])) {
-      $add_payment_query = "INSERT INTO transactions(`id_user`,`id_recipent`,`amount`,`transfer_date`) values('".$_SESSION['logged']['id']."','".$_POST['payment_recipent_id']."','".$_POST['payment_amount']."','".$_POST['payment_date']."')";
+      $add_payment_query = "INSERT INTO transactions(`id_user`,`id_recipent`,`perm_transaction`,`amount`,`transfer_date`) values('".$_SESSION['logged']['id']."','".$_POST['payment_recipent_id']."','n','".$_POST['payment_amount']."','".$_POST['payment_date']."')";
 
-      $add_payment_result = $mysqli->query($add_payment_query) or die("Zapytanie add_payment_query nie działa");
+      $add_payment_result = $mysqli->query($add_payment_query) or die("Zapytanie add_payment_query nie działa: ".$add_payment_query."\n".$mysqli->error);
     
       if (!$add_payment_result)
         echo json_encode(2); //Zapytanie nie powiodło się

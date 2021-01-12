@@ -217,8 +217,6 @@ function addPayment() {
   var payment_amount = document.getElementById("add_payment_amount").value;
   var payment_date = document.getElementById("add_payment_date").value;
 
-  alert(payment_recipent_id + " /" + payment_amount + " /" + payment_date);
-
   $.ajax({
     type: "POST",
     dataType: "json",

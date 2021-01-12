@@ -5,7 +5,7 @@
     $name_div = "<div class=\"fieldsets_input_div_parts\">Nazwa:<br>";
     $acc_number_div = "<div class=\"fieldsets_input_div_parts\">Numer konta:<br>";
 
-    if ($_SESSION['logged'] == "Moderator" || $_SESSION['logged'] == "Administrator") {
+    if ($_SESSION['logged']['role'] == "Moderator" || $_SESSION['logged']['role'] == "Administrator") {
       $edit_button_div = "<div class=\"fieldsets_input_div_parts\">Edytuj:<br>";
       $delete_button_div = "<div class=\"fieldsets_input_div_parts\">Usuń:<br>";
 

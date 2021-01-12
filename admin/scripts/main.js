@@ -213,8 +213,9 @@ window.onclick = function (event) {
 
 function addPayment() {
   /*TODO dokończyć funkcję odpalająca funkcje dodająca płatność */
-  var recipent_name = document.getElementById("recipent_name_input").value;
-  var acc_number = document.getElementById("acc_number_input").value;
+  var payment_recipent_id = document.getElementById("add_payment_recipents_select").slice(8);
+  var payment_amount = document.getElementById("add_payment_recipents_amount").value;
+  var payment_date = document.getElementById("add_payment_date").value;
 
   $.ajax({
     type: "POST",
@@ -222,8 +223,7 @@ function addPayment() {
     async: false,
     url: "./admin/functions/addPayment.php",
     data: {
-      recipent_name: recipent_name,
-      acc_number: acc_number
+      recipent_id: recipent_id
     },
     success: function (data) {
       switch (data) {

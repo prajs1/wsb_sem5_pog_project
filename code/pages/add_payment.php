@@ -11,12 +11,12 @@
       ?>
     </select><br>
     Kwota przelewu: <br>
-    <input type="number" name="add_payment_recipents_amount" class="input input_payment" id="add_payment_recipents_amount" min="0" placeholder="Podaj kwotę przelewu">
+    <input type="number" name="add_payment_amount" class="input input_payment" id="add_payment_amount" min="0" placeholder="Podaj kwotę przelewu">
     <br>
     Data przelewu: <br>
-    <input type="date" name="add_payment_recipents_date" class="input input_payment" id="add_payment_recipents_date" value="<?php echo date('Y-m-d'); ?>">
+    <input type="date" name="add_payment_date" class="input input_payment" id="add_payment_date" value="<?php echo date('Y-m-d'); ?>">
     <br>
-    <input type="checkbox" name="add_payment_recipents_checkbox" class="input_checkbox" id="add_payment_recipents_checkbox"> Przelew stały <br>
+    <input type="checkbox" name="add_payment_permament_checkbox" class="input_checkbox" id="add_payment_permament_checkbox"> Przelew stały <br>
     <br>
     <input type="button" value="Prześlij" class="button" onclick="addPayment()">  
   </fieldset>

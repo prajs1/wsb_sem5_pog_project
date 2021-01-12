@@ -213,9 +213,11 @@ window.onclick = function (event) {
 
 function addPayment() {
   /*TODO dokończyć funkcję odpalająca funkcje dodająca płatność */
-  var payment_recipent_id = document.getElementById("add_payment_recipents_select").slice(8);
-  var payment_amount = document.getElementById("add_payment_recipents_amount").value;
+  var payment_recipent_id = document.getElementById("add_payment_recipents_select").value.slice(8);
+  var payment_amount = document.getElementById("add_payment_amount").value;
   var payment_date = document.getElementById("add_payment_date").value;
+
+  alert(payment_recipent_id + " /" + payment_amount + " /" + payment_date);
 
   $.ajax({
     type: "POST",
@@ -223,7 +225,9 @@ function addPayment() {
     async: false,
     url: "./admin/functions/addPayment.php",
     data: {
-      recipent_id: recipent_id
+      payment_recipent_id: payment_recipent_id,
+      payment_amount: payment_amount,
+      payment_date: payment_date
     },
     success: function (data) {
       switch (data) {

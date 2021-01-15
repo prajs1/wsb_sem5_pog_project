@@ -252,8 +252,44 @@ window.onclick = function (event) {
 function addPayment() {
   /*TODO dokończyć funkcję odpalająca funkcje dodająca płatność */
   var payment_recipent_id = document.getElementById("add_payment_recipents_select").value.slice(8);
+  var payment_category = document.getElementById("add_payment_category_select").value;
   var payment_amount = document.getElementById("add_payment_amount").value;
   var payment_date = document.getElementById("add_payment_date").value;
+
+  switch (payment_category) {
+    case "house_and_bills":
+      payment_category = "Dom i rachunki";
+      break;
+    case "daily_expenses":
+      payment_category = "Codzienne wydatki";
+      break;
+    case "investments":
+      payment_category = "Inwestycje";
+      break;
+    case "savings":
+      payment_category = "Oszczędności";
+      break;
+    case "entertainment":
+      payment_category = "Rozrywka";
+      break;
+    case "car_and_transport":
+      payment_category = "Samochód i transport";
+      break;
+  }
+
+  if (document.getElementById("add_payment_private_expenses_checkbox").checked == true) {
+    var payment_private = 'y';
+  }
+  else{
+    var payment_private = 'n';
+  }
+
+  if (document.getElementById("add_payment_permament_checkbox").checked == true){
+    var payment_perm_date = document.getElementById("add_perm_payment_date").value;
+  }
+  else{
+    var payment_perm_date = 'n';
+  }
 
   $.ajax({
     type: "POST",
@@ -262,8 +298,11 @@ function addPayment() {
     url: "./admin/functions/addPayment.php",
     data: {
       payment_recipent_id: payment_recipent_id,
+      payment_category: payment_category,
       payment_amount: payment_amount,
-      payment_date: payment_date
+      payment_date: payment_date,
+      payment_private: payment_private,
+      payment_perm_date: payment_perm_date
     },
     success: function (data) {
       switch (data) {
@@ -284,4 +323,13 @@ function addPayment() {
     error: function () {
     }
   });
+}
+
+function showPermPaymentDateInput() {
+  if (document.getElementById("add_payment_permament_checkbox").checked == true) {
+    document.getElementById("perm_payment_div").style.display = "inline-block";
+  }
+  else {
+    document.getElementById("perm_payment_div").style.display = "none";
+  }
 }

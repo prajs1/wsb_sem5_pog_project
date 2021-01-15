@@ -75,6 +75,10 @@ body{
   transform: scale(1.5);
 }
 
+#perm_payment_div{
+  display: none;
+}
+
 .button{
   background: none;
   border: none;

@@ -33,6 +33,9 @@
       } elseif ($_GET['page'] == "add_payment") {
         $add_payment = new pageTemplate('add_payment');
         $body->Set("content", $add_payment->ToString(array('mysqli' => $mysqli)));
+      } elseif ($_GET['page'] == "payment_history") {
+        $payment_history = new pageTemplate('payment_history');
+        $body->Set("content", $payment_history->ToString(array('mysqli' => $mysqli)));
       } elseif ($_GET['page'] == "reports") {
         // code...
       } elseif ($_GET['page'] == "add_recipent") {

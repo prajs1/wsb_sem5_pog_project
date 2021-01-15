@@ -55,6 +55,38 @@ function updatePersonalLimit(username) {
   });
 }
 
+function updateHouseLimit() {
+  var house_limit = document.getElementById("house_limit_input").value;
+
+  $.ajax({
+    type: "POST",
+    dataType: "json",
+    async: false,
+    url: "./admin/functions/updateHouseLimit.php",
+    data: {
+      house_limit: house_limit
+    },
+    success: function (data) {
+      switch (data) {
+        case 0:
+          alert("Zmienne nie istnieją");
+          break;
+        case 1:
+          alert("Zmienne są puste");
+          break;
+        case 2:
+          alert("Coś poszło nie tak przy wykonywaniu zapytania");
+          break;
+        case 3:
+          location.reload();
+          break;
+      }
+    },
+    error: function () {
+    }
+  });
+}
+
 function updatePassword(username) {
   var pass1 = document.getElementsByClassName("pass_input")[0].value;
   var pass2 = document.getElementsByClassName("pass_input")[1].value;
@@ -119,6 +151,9 @@ function addRecipent() {
           break;
         case 3:
           location.reload();
+          break;
+        case 4:
+          alert("Niepoprawny numer bankowy");
           break;
       }
     },
@@ -188,6 +223,9 @@ function editRecipent() {
           break;
         case 3:
           location.reload();
+          break;
+        case 4:
+          alert("Niepoprawny numer bankowy");
           break;
       }
     },

@@ -94,13 +94,13 @@ body{
 }
 #footer1{
   left: 80%;
-  top: 95%;
+  top: 90%;
   position: fixed;
 }
 
 #footer2{
   right: 88%;
-  top: 95%;
+  top: 90%;
   position: fixed;
 }
 
@@ -261,7 +261,7 @@ nav{
   margin: 15% auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 630px;
+  width: 750px;
 }
 
 #edit_recipent_id{

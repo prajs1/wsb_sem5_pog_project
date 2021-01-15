@@ -11,7 +11,11 @@
 
       foreach ($recipents as $recipent) {
         $name_div .= "<input class=\"input\" id=\"recipent".$recipent['id_recipent']."\" type=\"text\" value=\"".$recipent['name']."\" onclick=\"copy('recipent".$recipent['id_recipent']."')\" readonly><br>";
-        $acc_number_div .= "<input class=\"input\" id=\"acc_number".$recipent['id_recipent']."\" type=\"text\" value=\"".$recipent['acc_number']."\" onclick=\"copy('acc_number".$recipent['id_recipent']."')\" readonly><br>";
+        if ($recipent['acc_number'] == NULL) {
+          $acc_number_div .= "<input class=\"input\" id=\"acc_number".$recipent['id_recipent']."\" type=\"text\" value=\"Brak\" onclick=\"copy('acc_number".$recipent['id_recipent']."')\" readonly><br>";
+        } else {
+          $acc_number_div .= "<input class=\"input\" id=\"acc_number".$recipent['id_recipent']."\" type=\"text\" value=\"".$recipent['acc_number']."\" onclick=\"copy('acc_number".$recipent['id_recipent']."')\" readonly><br>";
+        }
         $edit_button_div .= "<input class=\"button rec_button\" id=\"edit_recipent".$recipent['id_recipent']."\" type=\"button\" value=\"Edytuj\" onclick=\"showModal('recipent".$recipent['id_recipent']."','acc_number".$recipent['id_recipent']."')\"><br>";
         $delete_button_div .= "<input class=\"button button rec_button\" id=\"delete_recipent".$recipent['id_recipent']."\" type=\"button\" value=\"Usuń\" onclick=\"deleteRecipent('recipent".$recipent['id_recipent']."')\"><br>";
       }
@@ -25,7 +29,11 @@
     } else {
       foreach ($recipents as $recipent) {
         $name_div .= "<input class=\"input\" id=\"recipent".$recipent['id_recipent']."\" type=\"text\" value=\"".$recipent['name']."\" onclick=\"copy('recipent".$recipent['id_recipent']."')\" readonly><br>";
-        $acc_number_div .= "<input class=\"input\" id=\"acc_number".$recipent['id_recipent']."\" type=\"text\" value=\"".$recipent['acc_number']."\" onclick=\"copy('acc_number".$recipent['id_recipent']."')\" readonly><br>";
+        if ($recipent['acc_number'] == NULL) {
+          $acc_number_div .= "<input class=\"input\" id=\"acc_number".$recipent['id_recipent']."\" type=\"text\" value=\"Brak\" onclick=\"copy('acc_number".$recipent['id_recipent']."')\" readonly><br>";
+        } else {
+          $acc_number_div .= "<input class=\"input\" id=\"acc_number".$recipent['id_recipent']."\" type=\"text\" value=\"".$recipent['acc_number']."\" onclick=\"copy('acc_number".$recipent['id_recipent']."')\" readonly><br>";
+        }
       }
 
       $name_div .= "</div>";

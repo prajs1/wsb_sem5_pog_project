@@ -1,5 +1,5 @@
 <?php
-  $query_user = "SELECT `name`, `surname`, `login`, `role`, `personal_limit` FROM users WHERE `login` LIKE '" . $_SESSION['username'] . "'";
+  $query_user = "SELECT `name`, `surname`, `login`, `role`, `personal_limit`, `house_limit` FROM users WHERE `login` LIKE '" . $_SESSION['username'] . "'";
   $result_user = $mysqli->query($query_user) or die("Zapytanie query_user nie działa");
 
   if ($result_user->num_rows) {
@@ -9,7 +9,8 @@
         'surname' => $a['surname'],
         'login' => $a['login'],
         'role' => $a['role'],
-        'personal_limit' => $a['personal_limit']
+        'personal_limit' => $a['personal_limit'],
+        'house_limit' => $a['house_limit']
       );
     }
   }
@@ -20,6 +21,20 @@
     <div class="fieldsets_input_div_parts">Nazwisko: <br><input class="input" type="text" value="<?php echo $user_data['surname']; ?>" readonly /> </div></br>
     <div class="fieldsets_input_div_parts">Login: <br><input class="input" type="text" value="<?php echo $user_data['login']; ?>" readonly /> </div>
     <div class="fieldsets_input_div_parts">Rola: <br><input class="input" type="text" value="<?php echo $user_data['role']; ?>" readonly /> </div>
+  </fieldset>
+  </br>
+
+  
+  <fieldset class="fieldsets"><legend><b><i>Limit wydatków Domu</i></b></legend>
+    <?php if ($_SESSION['logged']['role'] == "Moderator" || $_SESSION['logged']['role'] == "Administrator") {
+      $limit = ($user_data['house_limit'] != -1) ? $user_data['house_limit'] : "Brak";
+      echo "<input type=\"text\" class=\"input\" id=\"house_limit_input\" value=\"".$limit."\" name=\"house_limit\"/> <br> Dla braku limitu ustaw '-1' 
+      </br>
+      <input class=\"button\" type=\"button\" value=\"Zaktualizuj\" onclick=\"updateHouseLimit()\">";
+    } else {
+      $limit = ($user_data['house_limit'] != -1) ? $user_data['house_limit'] : "Brak";
+      echo "<input type=\"text\" class=\"input\" id=\"house_limit_input\" value=\"".$limit."\" name=\"house_limit\" readonly/> <br>";
+    }?>
   </fieldset>
   </br>
 

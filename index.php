@@ -11,6 +11,8 @@
   require_once './admin/functions/checkPermissions.php';
   require_once './admin/functions/listRecipent.php';
   require_once './admin/functions/getRecipents.php';
+  require_once './admin/functions/listUsers.php';
+  require_once './admin/functions/getUsers.php';
   require_once './admin/functions/dbConnect.php';
 
   $html = new Template("./code/html.php");
@@ -44,6 +46,9 @@
       } elseif ($_GET['page'] == "recipents_list") {
         $recipents_list = new pageTemplate('recipents_list');
         $body->Set("content", $recipents_list->ToString(array('mysqli' => $mysqli)));
+      } elseif ($_GET['page'] == "users") {
+        $users = new pageTemplate('users');
+        $body->Set("content", $users->ToString(array('mysqli' => $mysqli)));
       }
     }
     else {

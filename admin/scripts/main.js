@@ -154,6 +154,10 @@ function updatePassword(username) {
   var pass2 = document.getElementsByClassName("pass_input")[1].value;
 
   if (pass1 === pass2) {
+    if (username == "user_pass_reset") {
+      username = document.getElementById("reset_pass_user_id").value;
+    }
+
     $.ajax({
       type: "POST",
       dataType: "json",
@@ -175,6 +179,7 @@ function updatePassword(username) {
             alert("Coś poszło nie tak przy wykonywaniu zapytania");
             break;
           case 3:
+            alert("Hasło zostało zmienione");
             location.reload();
             break;
         }
@@ -258,6 +263,39 @@ function deleteRecipent(recipent_id) {
   });
 }
 
+function deleteUser(user_id) {
+  user_id = user_id.slice(4);
+
+  $.ajax({
+    type: "POST",
+    dataType: "json",
+    async: false,
+    url: "./admin/functions/deleteUser.php",
+    data: {
+      user_id: user_id
+    },
+    success: function (data) {
+      switch (data) {
+        case 0:
+          alert("Zmienne nie istnieją");
+          break;
+        case 1:
+          alert("Zmienne są puste");
+          break;
+        case 2:
+          alert("Coś poszło nie tak przy wykonywaniu zapytania");
+          break;
+        case 3:
+          alert("Użytkownik został usunięty");
+          location.reload();
+          break;
+      }
+    },
+    error: function () {
+    }
+  });
+}
+
 function editRecipent() {
   recipent_id = document.getElementById("edit_recipent_id").value;
   recipent_name = document.getElementById("edit_recipent_name").value;
@@ -301,16 +339,21 @@ function editRecipent() {
 
 /* okno modal dla edycji odbiorcy */
 
-function showModal(name, acc_number) {
-  document.getElementById("modal_edit_recipent").style.display = "block";
+function showModalRecipent(name, acc_number) {
+  document.getElementById("modal_id").style.display = "block";
   document.getElementById("edit_recipent_name").value = document.getElementById(name).value;
   document.getElementById("edit_recipent_acc_number").value = document.getElementById(acc_number).value;
   document.getElementById("edit_recipent_id").value = name.slice(8);
 }
 
+function showModalUser(user_login) {
+  document.getElementById("modal_id").style.display = "block";
+  document.getElementById("reset_pass_user_id").value = user_login;
+}
+
 window.onclick = function (event) {
-  if (event.target == document.getElementById("modal_edit_recipent")) {
-    document.getElementById("modal_edit_recipent").style.display = "none";
+  if (event.target == document.getElementById("modal_id")) {
+    document.getElementById("modal_id").style.display = "none";
   }
 }
 
@@ -384,7 +427,7 @@ function addPayment() {
           alert("Płatność została dodana");
           updateLimitUsed(payment_amount, payment_private);
           break;
-        case 3:
+        case 4:
           alert("Kwota płatności przekracza limit wydatków");
           break;
       }

@@ -51,6 +51,10 @@ body{
   outline: none;
 }
 
+.user_list_short_input{
+  width: 184px;
+}
+
 .input_payment{
   margin-bottom: 10px;
 }
@@ -269,5 +273,9 @@ nav{
 }
 
 #edit_recipent_id{
+  display: none;
+}
+
+#reset_pass_user_id{
   display: none;
 }

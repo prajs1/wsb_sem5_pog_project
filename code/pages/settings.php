@@ -1,5 +1,5 @@
 <?php
-  $query_user = "SELECT `name`, `surname`, `login`, `role`, `personal_limit`, `house_limit` FROM users WHERE `login` LIKE '" . $_SESSION['username'] . "'";
+  $query_user = "SELECT `name`, `surname`, `login`, `role`, `personal_limit`, `house_limit`, `personal_limit_used`, `house_limit_used` FROM users WHERE `login` LIKE '" . $_SESSION['username'] . "'";
   $result_user = $mysqli->query($query_user) or die("Zapytanie query_user nie działa");
 
   if ($result_user->num_rows) {
@@ -10,7 +10,9 @@
         'login' => $a['login'],
         'role' => $a['role'],
         'personal_limit' => $a['personal_limit'],
-        'house_limit' => $a['house_limit']
+        'house_limit' => $a['house_limit'],
+        'personal_limit_used' => $a['personal_limit_used'],
+        'house_limit_used' => $a['house_limit_used']
       );
     }
   }
@@ -26,23 +28,45 @@
 
   
   <fieldset class="fieldsets"><legend><b><i>Limit wydatków Domu</i></b></legend>
-    <?php if ($_SESSION['logged']['role'] == "Moderator" || $_SESSION['logged']['role'] == "Administrator") {
-      $limit = ($user_data['house_limit'] != -1) ? $user_data['house_limit'] : "Brak";
-      echo "<input type=\"text\" class=\"input\" id=\"house_limit_input\" value=\"".$limit."\" name=\"house_limit\"/> <br> Dla braku limitu ustaw '-1' 
-      </br>
-      <input class=\"button\" type=\"button\" value=\"Zaktualizuj\" onclick=\"updateHouseLimit()\">";
-    } else {
-      $limit = ($user_data['house_limit'] != -1) ? $user_data['house_limit'] : "Brak";
-      echo "<input type=\"text\" class=\"input\" id=\"house_limit_input\" value=\"".$limit."\" name=\"house_limit\" readonly/> <br>";
-    }?>
+    <?php 
+      if ($_SESSION['logged']['role'] == "Moderator" || $_SESSION['logged']['role'] == "Administrator") {
+        $limit = ($user_data['house_limit'] != -1) ? $user_data['house_limit'] : "Brak";
+        echo "<input type=\"text\" class=\"input\" id=\"house_limit_input\" value=\"".$limit."\" name=\"house_limit\"/> <br> Dla braku limitu ustaw '-1' 
+        </br>
+        <input class=\"button\" type=\"button\" value=\"Zaktualizuj\" onclick=\"updateHouseLimit()\">";
+      } else {
+        $limit = ($user_data['house_limit'] != -1) ? $user_data['house_limit'] : "Brak";
+        echo "<input type=\"text\" class=\"input\" id=\"house_limit_input\" value=\"".$limit."\" name=\"house_limit\" readonly/> <br>";
+      }
+    ?>
   </fieldset>
   </br>
+
+  <fieldset class="fieldsets"><legend><b><i>Wykorzystany limit wydatków domu</i></b></legend>
+      <?php 
+        if ($_SESSION['logged']['role'] == "Moderator" || $_SESSION['logged']['role'] == "Administrator") {
+          echo "<input type=\"text\" class=\"input\" id=\"house_limit_used_input\" value=\"".$user_data['house_limit_used']."\" name=\"house_limit_used_input\" />
+          </br>
+          <input class=\"button\" type=\"button\" value=\"Wyzeruj\" onclick=\"clearHouseLimit('".$_SESSION['username']."')\">";
+        } else {
+          echo "<input type=\"text\" class=\"input\" id=\"house_limit_used_input\" value=\"".$user_data['house_limit_used']."\" name=\"house_limit_used_input\" /> <br>";
+        }
+      ?>
+    </fieldset>
+    </br>
 
   <form method="post">
     <fieldset class="fieldsets"><legend><b><i>Limit wydatków osobistych</i></b></legend>
       <input type="text" class="input" id="personal_limit_input" value="<?php echo ($user_data['personal_limit'] != -1) ? $user_data['personal_limit'] : "Brak";?>" name="personal_limit" /> <br> Dla braku limitu ustaw '-1' 
       </br>
       <input class="button" type="button" value="Zaktualizuj" onclick="updatePersonalLimit('<?php echo $_SESSION['username'];?>')">
+    </fieldset>
+    </br>
+
+    <fieldset class="fieldsets"><legend><b><i>Wykorzystany limit wydatków osobistych</i></b></legend>
+      <input type="text" class="input" id="personal_limit_used_input" value="<?php echo $user_data['personal_limit_used'];?>" name="personal_limit_used_input" />
+      </br>
+      <input class="button" type="button" value="Wyzeruj" onclick="clearPersonalLimit('<?php echo $_SESSION['username'];?>')">
     </fieldset>
     </br>
 

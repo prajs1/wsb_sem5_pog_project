@@ -55,6 +55,68 @@ function updatePersonalLimit(username) {
   });
 }
 
+function clearPersonalLimit(username) {
+  $.ajax({
+    type: "POST",
+    dataType: "json",
+    async: false,
+    url: "./admin/functions/clearPersonalLimit.php",
+    data: {
+      username: username
+    },
+    success: function (data) {
+      switch (data) {
+        case 0:
+          alert("Zmienne nie istnieją");
+          break;
+        case 1:
+          alert("Zmienne są puste");
+          break;
+        case 2:
+          alert("Coś poszło nie tak przy wykonywaniu zapytania");
+          break;
+        case 3:
+          alert("Wyzerowano wykorzystanie limitu osobistego");
+          location.reload();
+          break;
+      }
+    },
+    error: function () {
+    }
+  });
+}
+
+function clearHouseLimit(username) {
+  $.ajax({
+    type: "POST",
+    dataType: "json",
+    async: false,
+    url: "./admin/functions/clearHouseLimit.php",
+    data: {
+      username: username
+    },
+    success: function (data) {
+      switch (data) {
+        case 0:
+          alert("Zmienne nie istnieją");
+          break;
+        case 1:
+          alert("Zmienne są puste");
+          break;
+        case 2:
+          alert("Coś poszło nie tak przy wykonywaniu zapytania");
+          break;
+        case 3:
+          alert("Wyzerowano wykorzystanie limitu domu");
+          location.reload();
+          break;
+      }
+    },
+    error: function () {
+    }
+  });
+}
+
 function updateHouseLimit() {
   var house_limit = document.getElementById("house_limit_input").value;
 
@@ -150,6 +212,7 @@ function addRecipent() {
           alert("Coś poszło nie tak przy wykonywaniu zapytania");
           break;
         case 3:
+          alert("Odbiorca został dodany");
           location.reload();
           break;
         case 4:
@@ -185,6 +248,7 @@ function deleteRecipent(recipent_id) {
           alert("Coś poszło nie tak przy wykonywaniu zapytania");
           break;
         case 3:
+          alert("Odbiorca został usunięty");
           location.reload();
           break;
       }
@@ -222,6 +286,7 @@ function editRecipent() {
           alert("Coś poszło nie tak przy wykonywaniu zapytania");
           break;
         case 3:
+          alert("Odbiorca został zedytowany");
           location.reload();
           break;
         case 4:
@@ -316,6 +381,42 @@ function addPayment() {
           alert("Coś poszło nie tak przy wykonywaniu zapytania");
           break;
         case 3:
+          alert("Płatność została dodana");
+          updateLimitUsed(payment_amount, payment_private);
+          break;
+        case 3:
+          alert("Kwota płatności przekracza limit wydatków");
+          break;
+      }
+    },
+    error: function () {
+    }
+  });
+}
+
+function updateLimitUsed(payment_amount, payment_private) {
+  $.ajax({
+    type: "POST",
+    dataType: "json",
+    async: false,
+    url: "./admin/functions/updateLimitUsed.php",
+    data: {
+      payment_amount: payment_amount,
+      payment_private: payment_private
+    },
+    success: function (data) {
+      switch (data) {
+        case 0:
+          alert("Zmienne nie istnieją");
+          break;
+        case 1:
+          alert("Zmienne są puste");
+          break;
+        case 2:
+          alert("Coś poszło nie tak przy wykonywaniu zapytania aktualizacji limitu");
+          break;
+        case 3:
+          alert("Wykorzystany limit został zaktualizowany");
           location.reload();
           break;
       }

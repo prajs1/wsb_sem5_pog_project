@@ -13,6 +13,7 @@
   require_once './admin/functions/getRecipents.php';
   require_once './admin/functions/listUsers.php';
   require_once './admin/functions/getUsers.php';
+  require_once './admin/functions/getPayments.php';
   require_once './admin/functions/dbConnect.php';
 
   $html = new Template("./code/html.php");
@@ -49,6 +50,9 @@
       } elseif ($_GET['page'] == "users") {
         $users = new pageTemplate('users');
         $body->Set("content", $users->ToString(array('mysqli' => $mysqli)));
+      } elseif ($_GET['page'] == "add_user") {
+        $add_user = new pageTemplate('add_user');
+        $body->Set("content", $add_user->ToString(array('mysqli' => $mysqli)));
       }
     }
     else {

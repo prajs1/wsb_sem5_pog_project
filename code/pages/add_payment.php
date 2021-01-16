@@ -13,7 +13,7 @@
     </select><br>
     Kategoria: <br>
     <select name="add_payment_category_select" class="input_select" id="add_payment_category_select">
-      <option class="input_select_option" value="house_and_bills">Dom i rachunki</option>
+      <option class="input_select_option" value="house_and_bills" id="house_and_bills">Dom i rachunki</option>
       <option class="input_select_option" value="daily_expenses">Codzienne wydatki</option>
       <option class="input_select_option" value="investments">Inwestycje</option>
       <option class="input_select_option" value="savings">Oszczędności</option>
@@ -27,16 +27,20 @@
     <input type="date" name="add_payment_date" class="input input_payment" id="add_payment_date" value="<?php echo date('Y-m-d'); ?>">
     <br>
     <br>
-    <input type="checkbox" name="add_payment_private_expenses_checkbox" class="input_checkbox" id="add_payment_private_expenses_checkbox"> Wydatek prywatny 
+    <input type="checkbox" name="add_payment_private_expenses_checkbox" class="input_checkbox" id="add_payment_private_expenses_checkbox" onclick="showHouserAndBillsSelectOption()"> Wydatek prywatny 
     <br>
     <br>
-    <input type="checkbox" name="add_payment_permament_checkbox" class="input_checkbox" id="add_payment_permament_checkbox" onclick="showPermPaymentDateInput()"> Przelew stały 
-    <br>
-    <div id="perm_payment_div">
-      Data pierwszego przelewu stałego: <br>
-      <input type="date" name="add_perm_payment_date" class="input input_payment" id="add_perm_payment_date" value="<?php echo date('Y-m-d'); ?>">
-    </div>
-    <br>
+    <?php
+      if ($_SESSION['logged']['role'] == "Moderator" || $_SESSION['logged']['role'] == "Administrator") {
+        echo "<input type=\"checkbox\" name=\"add_payment_permament_checkbox\" class=\"input_checkbox\" id=\"add_payment_permament_checkbox\" onclick=\"showPermPaymentDateInput()\"> Przelew stały 
+        <br>
+        <div id=\"perm_payment_div\">
+          Data pierwszego przelewu stałego: <br>
+          <input type=\"date\" name=\"add_perm_payment_date\" class=\"input input_payment\" id=\"add_perm_payment_date\" value=\"<?php echo date('Y-m-d'); ?>\">
+        </div>
+        <br>";
+      }
+    ?>
     <input type="button" value="Prześlij" class="button" onclick="addPayment()">  
   </fieldset>
 </form>

@@ -41,7 +41,7 @@
 
         $new_limit_used = $old_limit_used + $_POST['payment_amount'];
 
-        $update_limit_h_used_query = "UPDATE users SET house_limit_used='".$new_limit_used."' WHERE id_user='".$_SESSION['logged']['id']."'";
+        $update_limit_h_used_query = "UPDATE users SET house_limit_used='".$new_limit_used."'";
         $update_limit_h_used_result = $mysqli->query($update_limit_h_used_query) or die("Zapytanie update_limit_h_used_query nie działa");
 
         if (!$update_limit_h_used_result)

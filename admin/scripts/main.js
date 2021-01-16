@@ -230,6 +230,52 @@ function addRecipent() {
   });
 }
 
+function addUser() {
+  var user_name = document.getElementById("user_name_input").value;
+  var user_surname = document.getElementById("user_surname_input").value;
+  var user_login = document.getElementById("user_login_input").value;
+  var pass1 = document.getElementsByClassName("pass_input")[0].value;
+  var pass2 = document.getElementsByClassName("pass_input")[1].value;
+  var user_role = document.getElementById("user_role_select").value;
+
+  if (pass1 == pass2) {
+    $.ajax({
+      type: "POST",
+      dataType: "json",
+      async: false,
+      url: "./admin/functions/addUser.php",
+      data: {
+        user_name: user_name,
+        user_surname: user_surname,
+        user_login: user_login,
+        user_password: pass1,
+        user_role: user_role
+      },
+      success: function (data) {
+        switch (data) {
+          case 0:
+            alert("Zmienne nie istnieją");
+            break;
+          case 1:
+            alert("Zmienne są puste");
+            break;
+          case 2:
+            alert("Coś poszło nie tak przy wykonywaniu zapytania");
+            break;
+          case 3:
+            alert("Użytkownik został dodany");
+            location.reload();
+            break;
+        }
+      },
+      error: function () {
+      }
+    });
+  } else {
+    alert("Wprowadzone hałsa nie są takie same");
+  }
+}
+
 function deleteRecipent(recipent_id) {
   recipent_id = recipent_id.slice(8);
 
@@ -475,5 +521,18 @@ function showPermPaymentDateInput() {
   }
   else {
     document.getElementById("perm_payment_div").style.display = "none";
+  }
+}
+
+function showHouserAndBillsSelectOption() {
+  if (document.getElementById("add_payment_private_expenses_checkbox").checked == true) {
+    document.getElementById("house_and_bills").style.display = "none";
+    
+    if (document.getElementById("add_payment_category_select").value == "house_and_bills") {
+      document.getElementById("add_payment_category_select").value = "daily_expenses";
+    }
+  }
+  else {
+    document.getElementById("house_and_bills").style.display = "inline-block";
   }
 }

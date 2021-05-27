@@ -41,6 +41,6 @@
         <br>";
       }
     ?>
-    <input type="button" value="Prześlij" class="button" onclick="addPayment()">  
+    <input type="button" value="Prześlij" class="button" onclick="addPayment('<?php echo $_SESSION['logged']['role']; ?>')">  
   </fieldset>
 </form>

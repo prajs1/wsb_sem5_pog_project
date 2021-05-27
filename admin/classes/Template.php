@@ -22,7 +22,7 @@
           return $this->data[$key];
         throw new Exception();
       } catch (\Exception $e) {
-        echo "Coś poszło nie tak przy tworzeniu klucza $key";
+        //echo "Coś poszło nie tak przy tworzeniu klucza $key";
       }
     }
 

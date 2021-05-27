@@ -403,7 +403,7 @@ window.onclick = function (event) {
   }
 }
 
-function addPayment() {
+function addPayment(user_role) {
   /*TODO dokończyć funkcję odpalająca funkcje dodająca płatność */
   var payment_recipent_id = document.getElementById("add_payment_recipents_select").value.slice(8);
   var payment_category = document.getElementById("add_payment_category_select").value;
@@ -438,10 +438,15 @@ function addPayment() {
     var payment_private = 'n';
   }
 
-  if (document.getElementById("add_payment_permament_checkbox").checked == true){
-    var payment_perm_date = document.getElementById("add_perm_payment_date").value;
+  if (user_role != "Inmate") {
+    if (document.getElementById("add_payment_permament_checkbox").checked == true) {
+      var payment_perm_date = document.getElementById("add_perm_payment_date").value;
+    }
+    else {
+      var payment_perm_date = 'n';
+    }
   }
-  else{
+  else {
     var payment_perm_date = 'n';
   }
 
